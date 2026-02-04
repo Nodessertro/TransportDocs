@@ -1,0 +1,140 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using TransportDocs.Models;
+using TransportDocs.Repositories;
+using TransportDocs.Services;
+
+namespace TransportDocs
+{
+    public partial class AllDocumentsForm : Form
+    {
+        private List<Contractor> _allContractors;
+
+        public AllDocumentsForm()
+        {
+            InitializeComponent();
+            LoadLookups();
+            UpdateNumberPreview();
+            ToggleRecipientFields();
+        }
+
+        private void LoadLookups()
+        {
+            cbCustomers.DataSource = new CustomerRepository().GetAll();
+            cbCustomers.DisplayMember = "Name";
+            cbCustomers.ValueMember = "Id";
+
+            cbCarriers.DataSource = new CarrierRepository().GetAll();
+            cbCarriers.DisplayMember = "Name";
+            cbCarriers.ValueMember = "Id";
+
+            _allContractors = new ContractorRepository().GetAll();
+            cbContractors.DataSource = _allContractors;
+            cbContractors.DisplayMember = "Name";
+            cbContractors.ValueMember = "Id";
+        }
+
+        private void chkPhysicalPerson_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateNumberPreview();
+            ToggleRecipientFields();
+        }
+
+        private void ToggleRecipientFields()
+        {
+            bool isPhysical = chkPhysicalPerson.Checked;
+
+            cbContractors.Visible = !isPhysical;
+
+            txtWhom.Visible = isPhysical;
+            txtAddress.Visible = isPhysical;
+        }
+
+        private void cbContractors_TextChanged(object sender, EventArgs e)
+        {
+            if (cbContractors.SelectedItem != null)
+                return;
+
+            string text = cbContractors.Text;
+
+            if (string.IsNullOrWhiteSpace(text))
+            {
+                cbContractors.DataSource = _allContractors;
+                return;
+            }
+
+            cbContractors.DataSource = _allContractors
+                .Where(c => c.Name.Contains(text, StringComparison.OrdinalIgnoreCase))
+                .ToList();
+
+            cbContractors.DroppedDown = true;
+            cbContractors.SelectionStart = text.Length;
+        }
+
+        private void btnCreateAll_Click(object sender, EventArgs e)
+        {
+            var req = new AllDocumentsRequest
+            {
+                Date = dtDate.Value,
+                City = txtCity.Text,
+                CustomerId = (int)cbCustomers.SelectedValue,
+                CarrierId = (int)cbCarriers.SelectedValue,
+                Cost = numCost.Value,
+
+                ActWithoutNumber = chkActWithoutNumber.Checked,
+
+                IsPhysicalPerson = chkPhysicalPerson.Checked,
+                ContractorId = chkPhysicalPerson.Checked
+                        ? null
+                        : (int?)cbContractors.SelectedValue,
+                Whom = chkPhysicalPerson.Checked
+                        ? txtWhom.Text
+                        : ((Contractor)cbContractors.SelectedItem).Name,
+                Address = chkPhysicalPerson.Checked
+                        ? txtAddress.Text
+                        : ((Contractor)cbContractors.SelectedItem).Address
+            };
+
+            var service = new AllDocumentsService();
+            service.CreateAll(req);
+
+            MessageBox.Show("Документы успешно созданы");
+        }
+
+        private void UpdateNumberPreview()
+        {
+            if (cbCarriers.SelectedItem is not Carrier carrier)
+                return;
+
+            int carrierId = carrier.Id;
+
+            var preview = new NumberPreviewService();
+
+            txtTripNumber.Text = preview.PreviewTripNumber(
+                carrierId,
+                dtDate.Value
+            );
+
+            txtActNumber.Text = chkActWithoutNumber.Checked
+                ? "б/н"
+                : preview.PreviewActNumber(carrierId);
+        }
+
+        private void cbCarriers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateNumberPreview();
+        }
+
+        private void dtDate_ValueChanged(object sender, EventArgs e)
+        {
+            UpdateNumberPreview();
+        }
+    }
+}
