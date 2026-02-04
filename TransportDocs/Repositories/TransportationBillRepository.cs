@@ -33,30 +33,35 @@ namespace TransportDocs.Repositories
                 FROM TransportationBills tb
                 JOIN Customers cu ON cu.Id = tb.CustomerId
                 JOIN Carriers ca ON ca.Id = tb.CarrierId
-                JOIN Contractors co ON co.Id = tb.ContractorId
+                LEFT JOIN Contractors co ON co.Id = tb.ContractorId
                 ORDER BY tb.Date DESC
             ";
 
             using var r = cmd.ExecuteReader();
             while (r.Read())
             {
+                string GetStringOrEmpty(int index)
+                {
+                    return r.IsDBNull(index) ? string.Empty : r.GetString(index);
+                }
+
                 list.Add(new TransportationBill
                 {
                     Id = r.GetInt32(0),
                     Date = DateTime.Parse(r.GetString(1)),
                     CustomerId = r.GetInt32(2),
                     CarrierId = r.GetInt32(3),
-                    ContractorId = r.GetInt32(4),
-                    InvoiceNumber = r.GetString(5),
-                    RequestNumber = r.GetString(6),
-                    Responsible = r.GetString(7),
-                    SupportingDocuments = r.GetString(8),
+                    ContractorId = r.IsDBNull(4) ? 0 : r.GetInt32(4),
+                    InvoiceNumber = GetStringOrEmpty(5),
+                    RequestNumber = GetStringOrEmpty(6),
+                    Responsible = GetStringOrEmpty(7),
+                    SupportingDocuments = GetStringOrEmpty(8),
                     Cost = r.GetDecimal(9),
-                    Address = r.GetString(10),
-                    Whom = r.GetString(11),
+                    Address = GetStringOrEmpty(10),
+                    Whom = GetStringOrEmpty(11),
                     CustomerName = r.GetString(12),
                     CarrierName = r.GetString(13),
-                    ContractorName = r.GetString(14)
+                    ContractorName = GetStringOrEmpty(14)
                 });
             }
 

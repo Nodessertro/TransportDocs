@@ -18,9 +18,12 @@ namespace TransportDocs.Services
                 FROM DocumentCounters
                 WHERE CarrierId = @car
                   AND Year = @year
+                  AND Type = @type
+                  AND Date IS NULL
             ";
             cmd.Parameters.AddWithValue("@car", carrierId);
             cmd.Parameters.AddWithValue("@year", year);
+            cmd.Parameters.AddWithValue("@type", "ACT");
 
             var result = cmd.ExecuteScalar();
 
@@ -33,7 +36,7 @@ namespace TransportDocs.Services
 
         public string PreviewTripNumber(int carrierId, DateTime date)
         {
-            int year = date.Year;
+            string dateKey = date.ToString("yyyy-MM-dd");
 
             using var con = Db.GetConnection();
             con.Open();
@@ -43,10 +46,12 @@ namespace TransportDocs.Services
                 SELECT LastNumber
                 FROM DocumentCounters
                 WHERE CarrierId = @car
-                  AND Year = @year
+                  AND Date = @date
+                  AND Type = @type
             ";
             cmd.Parameters.AddWithValue("@car", carrierId);
-            cmd.Parameters.AddWithValue("@year", year);
+            cmd.Parameters.AddWithValue("@date", dateKey);
+            cmd.Parameters.AddWithValue("@type", "TRIP");
 
             var result = cmd.ExecuteScalar();
 
@@ -56,7 +61,7 @@ namespace TransportDocs.Services
 
             string datePart = date.ToString("dd/MM/yy");
 
-            return $"{datePart}-{nextNumber}";
+            return $"{datePart}-{nextNumber:00}";
         }
     }
 }

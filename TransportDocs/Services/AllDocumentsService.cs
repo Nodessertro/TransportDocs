@@ -14,6 +14,7 @@ namespace TransportDocs.Services
 
             try
             {
+                const int PHYSICAL_PERSON_CONTRACTOR_ID = 1;
                 // -----------------------------
                 // 1. Генерация номеров
                 // -----------------------------
@@ -42,7 +43,10 @@ namespace TransportDocs.Services
 
                 finishedCmd.Parameters.AddWithValue("@cust", req.CustomerId);
                 finishedCmd.Parameters.AddWithValue("@car", req.CarrierId);
-                finishedCmd.Parameters.AddWithValue("@date", req.Date);
+                finishedCmd.Parameters.AddWithValue(
+                    "@date",
+                    req.Date.ToString("yyyy-MM-dd")
+                );
                 finishedCmd.Parameters.AddWithValue("@city", req.City);
                 finishedCmd.Parameters.AddWithValue("@cost", req.Cost);
                 finishedCmd.Parameters.AddWithValue("@act", actNumber);
@@ -57,21 +61,33 @@ namespace TransportDocs.Services
                 billCmd.Transaction = tx;
                 billCmd.CommandText = @"
                     INSERT INTO TransportationBills
-                    (Date, CustomerId, CarrierId, ContractorsId,
-                     InvoiceNumber, Cost, Whom, Address)
+                    (Date, CustomerId, CarrierId, ContractorId,
+                     InvoiceNumber, RequestNumber,
+                     Responsible, SupportingDocuments,
+                     Cost, Whom, Address)
                     VALUES
                     (@date, @cust, @car, @contr,
-                     @num, @cost, @whom, @addr)
+                     @inv, @req,
+                     @resp, @docs,
+                     @cost, @whom, @addr)
                 ";
 
-                billCmd.Parameters.AddWithValue("@date", req.Date);
+                billCmd.Parameters.AddWithValue(
+                    "@date",
+                    req.Date.ToString("yyyy-MM-dd")
+                );
                 billCmd.Parameters.AddWithValue("@cust", req.CustomerId);
                 billCmd.Parameters.AddWithValue("@car", req.CarrierId);
                 billCmd.Parameters.AddWithValue(
                     "@contr",
-                    req.IsPhysicalPerson ? DBNull.Value : req.ContractorId
+                    req.IsPhysicalPerson
+                        ? PHYSICAL_PERSON_CONTRACTOR_ID
+                        : req.ContractorId
                 );
-                billCmd.Parameters.AddWithValue("@num", tripNumber);
+                billCmd.Parameters.AddWithValue("@inv", actNumber);
+                billCmd.Parameters.AddWithValue("@req", tripNumber);
+                billCmd.Parameters.AddWithValue("@resp", string.Empty);
+                billCmd.Parameters.AddWithValue("@docs", string.Empty);
                 billCmd.Parameters.AddWithValue("@cost", req.Cost);
                 billCmd.Parameters.AddWithValue("@whom", req.Whom);
                 billCmd.Parameters.AddWithValue("@addr", req.Address);
