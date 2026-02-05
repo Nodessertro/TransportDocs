@@ -23,6 +23,7 @@ namespace TransportDocs
             LoadLookups();
             UpdateNumberPreview();
             ToggleRecipientFields();
+            UpdateContractorSelection();
         }
 
         private void LoadLookups()
@@ -45,6 +46,7 @@ namespace TransportDocs
         {
             UpdateNumberPreview();
             ToggleRecipientFields();
+            UpdateContractorSelection();
         }
 
         private void ToggleRecipientFields()
@@ -55,6 +57,19 @@ namespace TransportDocs
 
             txtAddress.Visible = isPhysical;
             label5.Visible = isPhysical;
+        }
+
+        private void UpdateContractorSelection()
+        {
+            if (!chkPhysicalPerson.Checked) return;
+
+            var target = _allContractors
+                ?.FirstOrDefault(c => c.Name == "Физическое лицо");
+
+            if (target != null)
+            {
+                cbContractors.SelectedItem = target;
+            }
         }
 
         private void cbContractors_TextChanged(object sender, EventArgs e)

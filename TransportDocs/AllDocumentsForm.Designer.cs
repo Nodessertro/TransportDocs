@@ -70,6 +70,7 @@
             // numCost
             // 
             numCost.Location = new Point(63, 140);
+            numCost.Maximum = new decimal(new int[] { 100000000, 0, 0, 0 });
             numCost.Name = "numCost";
             numCost.Size = new Size(120, 23);
             numCost.TabIndex = 2;
@@ -112,12 +113,15 @@
             // chkPhysicalPerson
             // 
             chkPhysicalPerson.AutoSize = true;
+            chkPhysicalPerson.Checked = true;
+            chkPhysicalPerson.CheckState = CheckState.Checked;
             chkPhysicalPerson.Location = new Point(97, 285);
             chkPhysicalPerson.Name = "chkPhysicalPerson";
             chkPhysicalPerson.Size = new Size(78, 19);
             chkPhysicalPerson.TabIndex = 7;
             chkPhysicalPerson.Text = "Физ лицо";
             chkPhysicalPerson.UseVisualStyleBackColor = true;
+            chkPhysicalPerson.CheckedChanged += chkPhysicalPerson_CheckedChanged;
             // 
             // cbContractors
             // 
