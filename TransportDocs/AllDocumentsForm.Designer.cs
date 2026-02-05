@@ -49,7 +49,22 @@
             btnCreateAll = new Button();
             btnAct = new Button();
             btnBill = new Button();
+            grpTrip = new GroupBox();
+            label9 = new Label();
+            label10 = new Label();
+            grpParties = new GroupBox();
+            grpRecipient = new GroupBox();
+            grpNumbers = new GroupBox();
+            panelButtons = new Panel();
+            panelHeader = new Panel();
+            lblTitle = new Label();
             ((System.ComponentModel.ISupportInitialize)numCost).BeginInit();
+            grpTrip.SuspendLayout();
+            grpParties.SuspendLayout();
+            grpRecipient.SuspendLayout();
+            grpNumbers.SuspendLayout();
+            panelButtons.SuspendLayout();
+            panelHeader.SuspendLayout();
             SuspendLayout();
             // 
             // dtDate
@@ -62,14 +77,14 @@
             // 
             // txtCity
             // 
-            txtCity.Location = new Point(120, 72);
+            txtCity.Location = new Point(120, 68);
             txtCity.Name = "txtCity";
             txtCity.Size = new Size(220, 23);
             txtCity.TabIndex = 1;
             // 
             // numCost
             // 
-            numCost.Location = new Point(120, 112);
+            numCost.Location = new Point(120, 104);
             numCost.Maximum = new decimal(new int[] { 100000000, 0, 0, 0 });
             numCost.Name = "numCost";
             numCost.Size = new Size(220, 23);
@@ -78,7 +93,7 @@
             // cbCustomers
             // 
             cbCustomers.FormattingEnabled = true;
-            cbCustomers.Location = new Point(120, 160);
+            cbCustomers.Location = new Point(120, 32);
             cbCustomers.Name = "cbCustomers";
             cbCustomers.Size = new Size(260, 23);
             cbCustomers.TabIndex = 3;
@@ -86,7 +101,7 @@
             // cbCarriers
             // 
             cbCarriers.FormattingEnabled = true;
-            cbCarriers.Location = new Point(120, 200);
+            cbCarriers.Location = new Point(120, 72);
             cbCarriers.Name = "cbCarriers";
             cbCarriers.Size = new Size(260, 23);
             cbCarriers.TabIndex = 4;
@@ -95,7 +110,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(20, 164);
+            label1.Location = new Point(20, 36);
             label1.Name = "label1";
             label1.Size = new Size(79, 15);
             label1.TabIndex = 5;
@@ -104,7 +119,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(20, 204);
+            label2.Location = new Point(20, 76);
             label2.Name = "label2";
             label2.Size = new Size(73, 15);
             label2.TabIndex = 6;
@@ -115,7 +130,7 @@
             chkPhysicalPerson.AutoSize = true;
             chkPhysicalPerson.Checked = true;
             chkPhysicalPerson.CheckState = CheckState.Checked;
-            chkPhysicalPerson.Location = new Point(120, 240);
+            chkPhysicalPerson.Location = new Point(120, 112);
             chkPhysicalPerson.Name = "chkPhysicalPerson";
             chkPhysicalPerson.Size = new Size(78, 19);
             chkPhysicalPerson.TabIndex = 7;
@@ -126,16 +141,16 @@
             // cbContractors
             // 
             cbContractors.FormattingEnabled = true;
-            cbContractors.Location = new Point(620, 32);
+            cbContractors.Location = new Point(120, 32);
             cbContractors.Name = "cbContractors";
-            cbContractors.Size = new Size(260, 23);
+            cbContractors.Size = new Size(300, 23);
             cbContractors.TabIndex = 8;
             cbContractors.TextChanged += cbContractors_TextChanged;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(500, 36);
+            label3.Location = new Point(16, 36);
             label3.Name = "label3";
             label3.Size = new Size(69, 15);
             label3.TabIndex = 9;
@@ -143,15 +158,15 @@
             // 
             // txtAddress
             // 
-            txtAddress.Location = new Point(620, 72);
+            txtAddress.Location = new Point(120, 68);
             txtAddress.Name = "txtAddress";
-            txtAddress.Size = new Size(260, 23);
+            txtAddress.Size = new Size(300, 23);
             txtAddress.TabIndex = 11;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(500, 76);
+            label5.Location = new Point(16, 72);
             label5.Name = "label5";
             label5.Size = new Size(40, 15);
             label5.TabIndex = 13;
@@ -160,7 +175,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(20, 76);
+            label6.Location = new Point(20, 72);
             label6.Name = "label6";
             label6.Size = new Size(40, 15);
             label6.TabIndex = 14;
@@ -168,14 +183,14 @@
             // 
             // txtActNumber
             // 
-            txtActNumber.Location = new Point(620, 120);
+            txtActNumber.Location = new Point(140, 32);
             txtActNumber.Name = "txtActNumber";
             txtActNumber.Size = new Size(140, 23);
             txtActNumber.TabIndex = 15;
             // 
             // txtTripNumber
             // 
-            txtTripNumber.Location = new Point(620, 160);
+            txtTripNumber.Location = new Point(140, 72);
             txtTripNumber.Name = "txtTripNumber";
             txtTripNumber.Size = new Size(140, 23);
             txtTripNumber.TabIndex = 16;
@@ -183,7 +198,7 @@
             // chkActWithoutNumber
             // 
             chkActWithoutNumber.AutoSize = true;
-            chkActWithoutNumber.Location = new Point(780, 122);
+            chkActWithoutNumber.Location = new Point(300, 34);
             chkActWithoutNumber.Name = "chkActWithoutNumber";
             chkActWithoutNumber.Size = new Size(89, 19);
             chkActWithoutNumber.TabIndex = 18;
@@ -194,7 +209,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(500, 124);
+            label7.Location = new Point(16, 36);
             label7.Name = "label7";
             label7.Size = new Size(71, 15);
             label7.TabIndex = 19;
@@ -203,7 +218,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(500, 164);
+            label8.Location = new Point(16, 76);
             label8.Name = "label8";
             label8.Size = new Size(84, 15);
             label8.TabIndex = 20;
@@ -211,64 +226,183 @@
             // 
             // btnCreateAll
             // 
-            btnCreateAll.Location = new Point(712, 360);
+            btnCreateAll.BackColor = Color.FromArgb(46, 125, 50);
+            btnCreateAll.FlatAppearance.BorderSize = 0;
+            btnCreateAll.FlatStyle = FlatStyle.Flat;
+            btnCreateAll.ForeColor = Color.White;
+            btnCreateAll.Location = new Point(250, 10);
             btnCreateAll.Name = "btnCreateAll";
-            btnCreateAll.Size = new Size(75, 23);
+            btnCreateAll.Size = new Size(90, 28);
             btnCreateAll.TabIndex = 21;
             btnCreateAll.Text = "Все";
-            btnCreateAll.UseVisualStyleBackColor = true;
+            btnCreateAll.UseVisualStyleBackColor = false;
             btnCreateAll.Click += btnCreateAll_Click;
             // 
             // btnAct
             // 
-            btnAct.Location = new Point(516, 360);
+            btnAct.BackColor = Color.FromArgb(21, 101, 192);
+            btnAct.FlatAppearance.BorderSize = 0;
+            btnAct.FlatStyle = FlatStyle.Flat;
+            btnAct.ForeColor = Color.White;
+            btnAct.Location = new Point(10, 10);
             btnAct.Name = "btnAct";
-            btnAct.Size = new Size(90, 23);
+            btnAct.Size = new Size(90, 28);
             btnAct.TabIndex = 22;
             btnAct.Text = "Акт";
-            btnAct.UseVisualStyleBackColor = true;
+            btnAct.UseVisualStyleBackColor = false;
             btnAct.Click += btnAct_Click;
             // 
             // btnBill
             // 
-            btnBill.Location = new Point(612, 360);
+            btnBill.BackColor = Color.FromArgb(0, 121, 107);
+            btnBill.FlatAppearance.BorderSize = 0;
+            btnBill.FlatStyle = FlatStyle.Flat;
+            btnBill.ForeColor = Color.White;
+            btnBill.Location = new Point(120, 10);
             btnBill.Name = "btnBill";
-            btnBill.Size = new Size(95, 23);
+            btnBill.Size = new Size(120, 28);
             btnBill.TabIndex = 23;
             btnBill.Text = "Накладная";
-            btnBill.UseVisualStyleBackColor = true;
+            btnBill.UseVisualStyleBackColor = false;
             btnBill.Click += btnBill_Click;
+            // 
+            // grpTrip
+            // 
+            grpTrip.BackColor = Color.White;
+            grpTrip.Controls.Add(label9);
+            grpTrip.Controls.Add(label10);
+            grpTrip.Controls.Add(dtDate);
+            grpTrip.Controls.Add(txtCity);
+            grpTrip.Controls.Add(numCost);
+            grpTrip.Controls.Add(label6);
+            grpTrip.Location = new Point(20, 70);
+            grpTrip.Name = "grpTrip";
+            grpTrip.Size = new Size(420, 140);
+            grpTrip.TabIndex = 24;
+            grpTrip.TabStop = false;
+            grpTrip.Text = "Маршрут и стоимость";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(20, 36);
+            label9.Name = "label9";
+            label9.Size = new Size(33, 15);
+            label9.TabIndex = 25;
+            label9.Text = "Дата";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(20, 108);
+            label10.Name = "label10";
+            label10.Size = new Size(100, 15);
+            label10.TabIndex = 26;
+            label10.Text = "Стоимость (руб.)";
+            // 
+            // grpParties
+            // 
+            grpParties.BackColor = Color.White;
+            grpParties.Controls.Add(label1);
+            grpParties.Controls.Add(label2);
+            grpParties.Controls.Add(cbCustomers);
+            grpParties.Controls.Add(cbCarriers);
+            grpParties.Controls.Add(chkPhysicalPerson);
+            grpParties.Location = new Point(20, 220);
+            grpParties.Name = "grpParties";
+            grpParties.Size = new Size(420, 160);
+            grpParties.TabIndex = 25;
+            grpParties.TabStop = false;
+            grpParties.Text = "Стороны";
+            // 
+            // grpRecipient
+            // 
+            grpRecipient.BackColor = Color.White;
+            grpRecipient.Controls.Add(label3);
+            grpRecipient.Controls.Add(cbContractors);
+            grpRecipient.Controls.Add(label5);
+            grpRecipient.Controls.Add(txtAddress);
+            grpRecipient.Location = new Point(460, 70);
+            grpRecipient.Name = "grpRecipient";
+            grpRecipient.Size = new Size(440, 110);
+            grpRecipient.TabIndex = 26;
+            grpRecipient.TabStop = false;
+            grpRecipient.Text = "Получатель";
+            // 
+            // grpNumbers
+            // 
+            grpNumbers.BackColor = Color.White;
+            grpNumbers.Controls.Add(label7);
+            grpNumbers.Controls.Add(txtActNumber);
+            grpNumbers.Controls.Add(chkActWithoutNumber);
+            grpNumbers.Controls.Add(label8);
+            grpNumbers.Controls.Add(txtTripNumber);
+            grpNumbers.Location = new Point(460, 190);
+            grpNumbers.Name = "grpNumbers";
+            grpNumbers.Size = new Size(440, 110);
+            grpNumbers.TabIndex = 27;
+            grpNumbers.TabStop = false;
+            grpNumbers.Text = "Номера";
+            // 
+            // panelButtons
+            // 
+            panelButtons.BackColor = Color.FromArgb(245, 245, 245);
+            panelButtons.Controls.Add(btnAct);
+            panelButtons.Controls.Add(btnBill);
+            panelButtons.Controls.Add(btnCreateAll);
+            panelButtons.Location = new Point(560, 390);
+            panelButtons.Name = "panelButtons";
+            panelButtons.Size = new Size(350, 48);
+            panelButtons.TabIndex = 28;
+            // 
+            // panelHeader
+            // 
+            panelHeader.BackColor = Color.FromArgb(33, 37, 41);
+            panelHeader.Controls.Add(lblTitle);
+            panelHeader.Dock = DockStyle.Top;
+            panelHeader.Location = new Point(0, 0);
+            panelHeader.Name = "panelHeader";
+            panelHeader.Size = new Size(950, 52);
+            panelHeader.TabIndex = 29;
+            // 
+            // lblTitle
+            // 
+            lblTitle.AutoSize = true;
+            lblTitle.Font = new Font("Calibri", 14F, FontStyle.Bold, GraphicsUnit.Point);
+            lblTitle.ForeColor = Color.White;
+            lblTitle.Location = new Point(18, 14);
+            lblTitle.Name = "lblTitle";
+            lblTitle.Size = new Size(214, 23);
+            lblTitle.TabIndex = 0;
+            lblTitle.Text = "Создание документов";
             // 
             // AllDocumentsForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(920, 430);
+            BackColor = Color.WhiteSmoke;
+            ClientSize = new Size(950, 460);
             Font = new Font("Calibri", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            Controls.Add(btnBill);
-            Controls.Add(btnAct);
-            Controls.Add(btnCreateAll);
-            Controls.Add(label8);
-            Controls.Add(label7);
-            Controls.Add(chkActWithoutNumber);
-            Controls.Add(txtTripNumber);
-            Controls.Add(txtActNumber);
-            Controls.Add(label6);
-            Controls.Add(label5);
-            Controls.Add(txtAddress);
-            Controls.Add(label3);
-            Controls.Add(cbContractors);
-            Controls.Add(chkPhysicalPerson);
-            Controls.Add(label2);
-            Controls.Add(label1);
-            Controls.Add(cbCarriers);
-            Controls.Add(cbCustomers);
-            Controls.Add(numCost);
-            Controls.Add(txtCity);
-            Controls.Add(dtDate);
+            Controls.Add(panelHeader);
+            Controls.Add(panelButtons);
+            Controls.Add(grpNumbers);
+            Controls.Add(grpRecipient);
+            Controls.Add(grpParties);
+            Controls.Add(grpTrip);
             Name = "AllDocumentsForm";
             Text = "Документы";
             ((System.ComponentModel.ISupportInitialize)numCost).EndInit();
+            grpTrip.ResumeLayout(false);
+            grpTrip.PerformLayout();
+            grpParties.ResumeLayout(false);
+            grpParties.PerformLayout();
+            grpRecipient.ResumeLayout(false);
+            grpRecipient.PerformLayout();
+            grpNumbers.ResumeLayout(false);
+            grpNumbers.PerformLayout();
+            panelButtons.ResumeLayout(false);
+            panelHeader.ResumeLayout(false);
+            panelHeader.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -296,5 +430,14 @@
         private Button btnCreateAll;
         private Button btnAct;
         private Button btnBill;
+        private GroupBox grpTrip;
+        private Label label9;
+        private Label label10;
+        private GroupBox grpParties;
+        private GroupBox grpRecipient;
+        private GroupBox grpNumbers;
+        private Panel panelButtons;
+        private Panel panelHeader;
+        private Label lblTitle;
     }
 }
