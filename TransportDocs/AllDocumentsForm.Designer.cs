@@ -54,48 +54,48 @@
             // 
             // dtDate
             // 
-            dtDate.Location = new Point(63, 44);
+            dtDate.Location = new Point(120, 32);
             dtDate.Name = "dtDate";
-            dtDate.Size = new Size(200, 23);
+            dtDate.Size = new Size(220, 23);
             dtDate.TabIndex = 0;
             dtDate.ValueChanged += dtDate_ValueChanged;
             // 
             // txtCity
             // 
-            txtCity.Location = new Point(107, 94);
+            txtCity.Location = new Point(120, 72);
             txtCity.Name = "txtCity";
-            txtCity.Size = new Size(100, 23);
+            txtCity.Size = new Size(220, 23);
             txtCity.TabIndex = 1;
             // 
             // numCost
             // 
-            numCost.Location = new Point(63, 140);
+            numCost.Location = new Point(120, 112);
             numCost.Maximum = new decimal(new int[] { 100000000, 0, 0, 0 });
             numCost.Name = "numCost";
-            numCost.Size = new Size(120, 23);
+            numCost.Size = new Size(220, 23);
             numCost.TabIndex = 2;
             // 
             // cbCustomers
             // 
             cbCustomers.FormattingEnabled = true;
-            cbCustomers.Location = new Point(97, 192);
+            cbCustomers.Location = new Point(120, 160);
             cbCustomers.Name = "cbCustomers";
-            cbCustomers.Size = new Size(121, 23);
+            cbCustomers.Size = new Size(260, 23);
             cbCustomers.TabIndex = 3;
             // 
             // cbCarriers
             // 
             cbCarriers.FormattingEnabled = true;
-            cbCarriers.Location = new Point(97, 238);
+            cbCarriers.Location = new Point(120, 200);
             cbCarriers.Name = "cbCarriers";
-            cbCarriers.Size = new Size(121, 23);
+            cbCarriers.Size = new Size(260, 23);
             cbCarriers.TabIndex = 4;
             cbCarriers.SelectedIndexChanged += cbCarriers_SelectedIndexChanged;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(12, 195);
+            label1.Location = new Point(20, 164);
             label1.Name = "label1";
             label1.Size = new Size(79, 15);
             label1.TabIndex = 5;
@@ -104,7 +104,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(12, 246);
+            label2.Location = new Point(20, 204);
             label2.Name = "label2";
             label2.Size = new Size(73, 15);
             label2.TabIndex = 6;
@@ -115,7 +115,7 @@
             chkPhysicalPerson.AutoSize = true;
             chkPhysicalPerson.Checked = true;
             chkPhysicalPerson.CheckState = CheckState.Checked;
-            chkPhysicalPerson.Location = new Point(97, 285);
+            chkPhysicalPerson.Location = new Point(120, 240);
             chkPhysicalPerson.Name = "chkPhysicalPerson";
             chkPhysicalPerson.Size = new Size(78, 19);
             chkPhysicalPerson.TabIndex = 7;
@@ -126,16 +126,16 @@
             // cbContractors
             // 
             cbContractors.FormattingEnabled = true;
-            cbContractors.Location = new Point(488, 47);
+            cbContractors.Location = new Point(620, 32);
             cbContractors.Name = "cbContractors";
-            cbContractors.Size = new Size(121, 23);
+            cbContractors.Size = new Size(260, 23);
             cbContractors.TabIndex = 8;
             cbContractors.TextChanged += cbContractors_TextChanged;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(404, 50);
+            label3.Location = new Point(500, 36);
             label3.Name = "label3";
             label3.Size = new Size(69, 15);
             label3.TabIndex = 9;
@@ -143,15 +143,15 @@
             // 
             // txtAddress
             // 
-            txtAddress.Location = new Point(488, 140);
+            txtAddress.Location = new Point(620, 72);
             txtAddress.Name = "txtAddress";
-            txtAddress.Size = new Size(100, 23);
+            txtAddress.Size = new Size(260, 23);
             txtAddress.TabIndex = 11;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(424, 148);
+            label5.Location = new Point(500, 76);
             label5.Name = "label5";
             label5.Size = new Size(40, 15);
             label5.TabIndex = 13;
@@ -160,7 +160,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(61, 97);
+            label6.Location = new Point(20, 76);
             label6.Name = "label6";
             label6.Size = new Size(40, 15);
             label6.TabIndex = 14;
@@ -168,22 +168,22 @@
             // 
             // txtActNumber
             // 
-            txtActNumber.Location = new Point(488, 187);
+            txtActNumber.Location = new Point(620, 120);
             txtActNumber.Name = "txtActNumber";
-            txtActNumber.Size = new Size(100, 23);
+            txtActNumber.Size = new Size(140, 23);
             txtActNumber.TabIndex = 15;
             // 
             // txtTripNumber
             // 
-            txtTripNumber.Location = new Point(488, 238);
+            txtTripNumber.Location = new Point(620, 160);
             txtTripNumber.Name = "txtTripNumber";
-            txtTripNumber.Size = new Size(100, 23);
+            txtTripNumber.Size = new Size(140, 23);
             txtTripNumber.TabIndex = 16;
             // 
             // chkActWithoutNumber
             // 
             chkActWithoutNumber.AutoSize = true;
-            chkActWithoutNumber.Location = new Point(613, 189);
+            chkActWithoutNumber.Location = new Point(780, 122);
             chkActWithoutNumber.Name = "chkActWithoutNumber";
             chkActWithoutNumber.Size = new Size(89, 19);
             chkActWithoutNumber.TabIndex = 18;
@@ -194,7 +194,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(404, 190);
+            label7.Location = new Point(500, 124);
             label7.Name = "label7";
             label7.Size = new Size(71, 15);
             label7.TabIndex = 19;
@@ -203,7 +203,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(398, 241);
+            label8.Location = new Point(500, 164);
             label8.Name = "label8";
             label8.Size = new Size(84, 15);
             label8.TabIndex = 20;
@@ -211,7 +211,7 @@
             // 
             // btnCreateAll
             // 
-            btnCreateAll.Location = new Point(532, 327);
+            btnCreateAll.Location = new Point(712, 360);
             btnCreateAll.Name = "btnCreateAll";
             btnCreateAll.Size = new Size(75, 23);
             btnCreateAll.TabIndex = 21;
@@ -221,7 +221,7 @@
             // 
             // btnAct
             // 
-            btnAct.Location = new Point(332, 327);
+            btnAct.Location = new Point(516, 360);
             btnAct.Name = "btnAct";
             btnAct.Size = new Size(90, 23);
             btnAct.TabIndex = 22;
@@ -231,7 +231,7 @@
             // 
             // btnBill
             // 
-            btnBill.Location = new Point(430, 327);
+            btnBill.Location = new Point(612, 360);
             btnBill.Name = "btnBill";
             btnBill.Size = new Size(95, 23);
             btnBill.TabIndex = 23;
@@ -243,7 +243,8 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(920, 430);
+            Font = new Font("Calibri", 10F, FontStyle.Regular, GraphicsUnit.Point);
             Controls.Add(btnBill);
             Controls.Add(btnAct);
             Controls.Add(btnCreateAll);
@@ -266,7 +267,7 @@
             Controls.Add(txtCity);
             Controls.Add(dtDate);
             Name = "AllDocumentsForm";
-            Text = "AllDocumentsForm";
+            Text = "Документы";
             ((System.ComponentModel.ISupportInitialize)numCost).EndInit();
             ResumeLayout(false);
             PerformLayout();
