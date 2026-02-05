@@ -45,7 +45,6 @@
             Delete = new Button();
             label1 = new Label();
             label2 = new Label();
-            label3 = new Label();
             label4 = new Label();
             label5 = new Label();
             lblInvoiceNumber = new Label();
@@ -57,24 +56,39 @@
             label12 = new Label();
             chkActWithoutNumber = new CheckBox();
             chkPhysicalPerson = new CheckBox();
+            grpList = new GroupBox();
+            grpMain = new GroupBox();
+            grpNumbers = new GroupBox();
+            grpReceiver = new GroupBox();
+            grpDocs = new GroupBox();
+            panelButtons = new Panel();
+            panelHeader = new Panel();
+            lblTitle = new Label();
             ((System.ComponentModel.ISupportInitialize)gridBills).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numCost).BeginInit();
+            grpList.SuspendLayout();
+            grpMain.SuspendLayout();
+            grpNumbers.SuspendLayout();
+            grpReceiver.SuspendLayout();
+            grpDocs.SuspendLayout();
+            panelButtons.SuspendLayout();
+            panelHeader.SuspendLayout();
             SuspendLayout();
             // 
             // gridBills
             // 
             gridBills.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            gridBills.Location = new Point(12, 61);
+            gridBills.Location = new Point(12, 26);
             gridBills.Name = "gridBills";
             gridBills.ReadOnly = true;
             gridBills.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            gridBills.Size = new Size(883, 150);
+            gridBills.Size = new Size(916, 160);
             gridBills.TabIndex = 0;
             gridBills.CellContentClick += gridBills_CellClick;
             // 
             // dtDate
             // 
-            dtDate.Location = new Point(100, 248);
+            dtDate.Location = new Point(120, 32);
             dtDate.Name = "dtDate";
             dtDate.Size = new Size(200, 23);
             dtDate.TabIndex = 1;
@@ -84,7 +98,7 @@
             // 
             cbCustomers.DropDownStyle = ComboBoxStyle.DropDownList;
             cbCustomers.FormattingEnabled = true;
-            cbCustomers.Location = new Point(100, 287);
+            cbCustomers.Location = new Point(120, 68);
             cbCustomers.Name = "cbCustomers";
             cbCustomers.Size = new Size(200, 23);
             cbCustomers.TabIndex = 2;
@@ -93,7 +107,7 @@
             // 
             cbCarriers.DropDownStyle = ComboBoxStyle.DropDownList;
             cbCarriers.FormattingEnabled = true;
-            cbCarriers.Location = new Point(100, 328);
+            cbCarriers.Location = new Point(120, 104);
             cbCarriers.Name = "cbCarriers";
             cbCarriers.Size = new Size(200, 23);
             cbCarriers.TabIndex = 3;
@@ -102,7 +116,7 @@
             // cbContractors
             // 
             cbContractors.FormattingEnabled = true;
-            cbContractors.Location = new Point(100, 372);
+            cbContractors.Location = new Point(120, 140);
             cbContractors.Name = "cbContractors";
             cbContractors.Size = new Size(200, 23);
             cbContractors.TabIndex = 4;
@@ -112,117 +126,119 @@
             // 
             // txtActNumber
             // 
-            txtActNumber.Location = new Point(450, 248);
+            txtActNumber.Location = new Point(120, 32);
             txtActNumber.Name = "txtActNumber";
-            txtActNumber.Size = new Size(171, 23);
+            txtActNumber.Size = new Size(160, 23);
             txtActNumber.TabIndex = 6;
             // 
             // txtTripNumber
             // 
-            txtTripNumber.Location = new Point(450, 290);
+            txtTripNumber.Location = new Point(120, 68);
             txtTripNumber.Name = "txtTripNumber";
-            txtTripNumber.Size = new Size(171, 23);
+            txtTripNumber.Size = new Size(160, 23);
             txtTripNumber.TabIndex = 7;
             // 
             // txtResponsible
             // 
-            txtResponsible.Location = new Point(724, 328);
+            txtResponsible.Location = new Point(140, 70);
             txtResponsible.Name = "txtResponsible";
-            txtResponsible.Size = new Size(171, 23);
+            txtResponsible.Size = new Size(200, 23);
             txtResponsible.TabIndex = 12;
             // 
             // txtDocs
             // 
-            txtDocs.Location = new Point(724, 294);
+            txtDocs.Location = new Point(140, 32);
             txtDocs.Name = "txtDocs";
-            txtDocs.Size = new Size(171, 23);
+            txtDocs.Size = new Size(200, 23);
             txtDocs.TabIndex = 11;
             // 
             // txtAddress
             // 
-            txtAddress.Location = new Point(450, 326);
+            txtAddress.Location = new Point(120, 32);
             txtAddress.Name = "txtAddress";
-            txtAddress.Size = new Size(171, 23);
+            txtAddress.Size = new Size(300, 23);
             txtAddress.TabIndex = 8;
             // 
             // txtWhom
             // 
-            txtWhom.Location = new Point(450, 372);
+            txtWhom.Location = new Point(120, 68);
             txtWhom.Name = "txtWhom";
-            txtWhom.Size = new Size(171, 23);
+            txtWhom.Size = new Size(300, 23);
             txtWhom.TabIndex = 9;
             // 
             // numCost
             // 
             numCost.DecimalPlaces = 2;
-            numCost.Location = new Point(724, 372);
+            numCost.Location = new Point(140, 108);
             numCost.Maximum = new decimal(new int[] { 100000000, 0, 0, 0 });
             numCost.Name = "numCost";
-            numCost.Size = new Size(171, 23);
+            numCost.Size = new Size(200, 23);
             numCost.TabIndex = 13;
             // 
             // Add
             // 
-            Add.Location = new Point(147, 456);
+            Add.BackColor = Color.FromArgb(21, 101, 192);
+            Add.FlatAppearance.BorderSize = 0;
+            Add.FlatStyle = FlatStyle.Flat;
+            Add.ForeColor = Color.White;
+            Add.Location = new Point(10, 10);
             Add.Name = "Add";
-            Add.Size = new Size(75, 23);
+            Add.Size = new Size(120, 28);
             Add.TabIndex = 12;
             Add.Text = "Создать";
-            Add.UseVisualStyleBackColor = true;
+            Add.UseVisualStyleBackColor = false;
             Add.Click += btnAdd_Click;
             // 
             // Update
             // 
-            Update.Location = new Point(498, 456);
+            Update.BackColor = Color.FromArgb(0, 121, 107);
+            Update.FlatAppearance.BorderSize = 0;
+            Update.FlatStyle = FlatStyle.Flat;
+            Update.ForeColor = Color.White;
+            Update.Location = new Point(150, 10);
             Update.Name = "Update";
-            Update.Size = new Size(75, 23);
+            Update.Size = new Size(120, 28);
             Update.TabIndex = 13;
             Update.Text = "Обновить";
-            Update.UseVisualStyleBackColor = true;
+            Update.UseVisualStyleBackColor = false;
             Update.Click += btnUpdate_Click;
             // 
             // Delete
             // 
-            Delete.Location = new Point(738, 456);
+            Delete.BackColor = Color.FromArgb(198, 40, 40);
+            Delete.FlatAppearance.BorderSize = 0;
+            Delete.FlatStyle = FlatStyle.Flat;
+            Delete.ForeColor = Color.White;
+            Delete.Location = new Point(290, 10);
             Delete.Name = "Delete";
-            Delete.Size = new Size(75, 23);
+            Delete.Size = new Size(120, 28);
             Delete.TabIndex = 14;
             Delete.Text = "Удалить";
-            Delete.UseVisualStyleBackColor = true;
+            Delete.UseVisualStyleBackColor = false;
             Delete.Click += btnDelete_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(62, 254);
+            label1.Location = new Point(20, 36);
             label1.Name = "label1";
-            label1.Size = new Size(32, 15);
+            label1.Size = new Size(33, 15);
             label1.TabIndex = 15;
             label1.Text = "Дата";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(15, 290);
+            label2.Location = new Point(20, 72);
             label2.Name = "label2";
             label2.Size = new Size(79, 15);
             label2.TabIndex = 16;
             label2.Text = "Организация";
             // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Times New Roman", 18F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            label3.Location = new Point(324, 9);
-            label3.Name = "label3";
-            label3.Size = new Size(297, 26);
-            label3.TabIndex = 17;
-            label3.Text = "Транспортные накладные";
-            // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(21, 334);
+            label4.Location = new Point(20, 108);
             label4.Name = "label4";
             label4.Size = new Size(73, 15);
             label4.TabIndex = 18;
@@ -231,7 +247,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(25, 375);
+            label5.Location = new Point(20, 144);
             label5.Name = "label5";
             label5.Size = new Size(69, 15);
             label5.TabIndex = 19;
@@ -240,7 +256,7 @@
             // lblInvoiceNumber
             // 
             lblInvoiceNumber.AutoSize = true;
-            lblInvoiceNumber.Location = new Point(398, 254);
+            lblInvoiceNumber.Location = new Point(20, 36);
             lblInvoiceNumber.Name = "lblInvoiceNumber";
             lblInvoiceNumber.Size = new Size(46, 15);
             lblInvoiceNumber.TabIndex = 20;
@@ -249,7 +265,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(385, 298);
+            label7.Location = new Point(20, 72);
             label7.Name = "label7";
             label7.Size = new Size(59, 15);
             label7.TabIndex = 21;
@@ -258,7 +274,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(627, 333);
+            label8.Location = new Point(20, 74);
             label8.Name = "label8";
             label8.Size = new Size(91, 15);
             label8.TabIndex = 22;
@@ -267,7 +283,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(683, 377);
+            label9.Location = new Point(20, 112);
             label9.Name = "label9";
             label9.Size = new Size(35, 15);
             label9.TabIndex = 23;
@@ -276,7 +292,7 @@
             // lblWhom
             // 
             lblWhom.AutoSize = true;
-            lblWhom.Location = new Point(408, 377);
+            lblWhom.Location = new Point(20, 72);
             lblWhom.Name = "lblWhom";
             lblWhom.Size = new Size(36, 15);
             lblWhom.TabIndex = 24;
@@ -285,7 +301,7 @@
             // lblAdres
             // 
             lblAdres.AutoSize = true;
-            lblAdres.Location = new Point(404, 334);
+            lblAdres.Location = new Point(20, 36);
             lblAdres.Name = "lblAdres";
             lblAdres.Size = new Size(40, 15);
             lblAdres.TabIndex = 25;
@@ -294,7 +310,7 @@
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(636, 300);
+            label12.Location = new Point(20, 36);
             label12.Name = "label12";
             label12.Size = new Size(82, 15);
             label12.TabIndex = 26;
@@ -303,7 +319,7 @@
             // chkActWithoutNumber
             // 
             chkActWithoutNumber.AutoSize = true;
-            chkActWithoutNumber.Location = new Point(724, 248);
+            chkActWithoutNumber.Location = new Point(300, 34);
             chkActWithoutNumber.Name = "chkActWithoutNumber";
             chkActWithoutNumber.Size = new Size(111, 19);
             chkActWithoutNumber.TabIndex = 10;
@@ -314,7 +330,7 @@
             // chkPhysicalPerson
             // 
             chkPhysicalPerson.AutoSize = true;
-            chkPhysicalPerson.Location = new Point(100, 413);
+            chkPhysicalPerson.Location = new Point(120, 170);
             chkPhysicalPerson.Name = "chkPhysicalPerson";
             chkPhysicalPerson.Size = new Size(123, 19);
             chkPhysicalPerson.TabIndex = 5;
@@ -322,46 +338,144 @@
             chkPhysicalPerson.UseVisualStyleBackColor = true;
             chkPhysicalPerson.CheckedChanged += chkPhysicalPerson_CheckedChanged;
             // 
+            // grpList
+            // 
+            grpList.BackColor = Color.White;
+            grpList.Controls.Add(gridBills);
+            grpList.Location = new Point(20, 70);
+            grpList.Name = "grpList";
+            grpList.Size = new Size(940, 200);
+            grpList.TabIndex = 27;
+            grpList.TabStop = false;
+            grpList.Text = "Список накладных";
+            // 
+            // grpMain
+            // 
+            grpMain.BackColor = Color.White;
+            grpMain.Controls.Add(label1);
+            grpMain.Controls.Add(dtDate);
+            grpMain.Controls.Add(label2);
+            grpMain.Controls.Add(cbCustomers);
+            grpMain.Controls.Add(label4);
+            grpMain.Controls.Add(cbCarriers);
+            grpMain.Controls.Add(label5);
+            grpMain.Controls.Add(cbContractors);
+            grpMain.Controls.Add(chkPhysicalPerson);
+            grpMain.Location = new Point(20, 280);
+            grpMain.Name = "grpMain";
+            grpMain.Size = new Size(450, 200);
+            grpMain.TabIndex = 28;
+            grpMain.TabStop = false;
+            grpMain.Text = "Основные данные";
+            // 
+            // grpNumbers
+            // 
+            grpNumbers.BackColor = Color.White;
+            grpNumbers.Controls.Add(lblInvoiceNumber);
+            grpNumbers.Controls.Add(txtActNumber);
+            grpNumbers.Controls.Add(chkActWithoutNumber);
+            grpNumbers.Controls.Add(label7);
+            grpNumbers.Controls.Add(txtTripNumber);
+            grpNumbers.Location = new Point(500, 280);
+            grpNumbers.Name = "grpNumbers";
+            grpNumbers.Size = new Size(460, 120);
+            grpNumbers.TabIndex = 29;
+            grpNumbers.TabStop = false;
+            grpNumbers.Text = "Номера";
+            // 
+            // grpReceiver
+            // 
+            grpReceiver.BackColor = Color.White;
+            grpReceiver.Controls.Add(lblAdres);
+            grpReceiver.Controls.Add(txtAddress);
+            grpReceiver.Controls.Add(lblWhom);
+            grpReceiver.Controls.Add(txtWhom);
+            grpReceiver.Location = new Point(500, 410);
+            grpReceiver.Name = "grpReceiver";
+            grpReceiver.Size = new Size(460, 120);
+            grpReceiver.TabIndex = 30;
+            grpReceiver.TabStop = false;
+            grpReceiver.Text = "Получатель";
+            // 
+            // grpDocs
+            // 
+            grpDocs.BackColor = Color.White;
+            grpDocs.Controls.Add(label12);
+            grpDocs.Controls.Add(txtDocs);
+            grpDocs.Controls.Add(label8);
+            grpDocs.Controls.Add(txtResponsible);
+            grpDocs.Controls.Add(label9);
+            grpDocs.Controls.Add(numCost);
+            grpDocs.Location = new Point(20, 490);
+            grpDocs.Name = "grpDocs";
+            grpDocs.Size = new Size(450, 140);
+            grpDocs.TabIndex = 31;
+            grpDocs.TabStop = false;
+            grpDocs.Text = "Документы и стоимость";
+            // 
+            // panelButtons
+            // 
+            panelButtons.BackColor = Color.FromArgb(245, 245, 245);
+            panelButtons.Controls.Add(Add);
+            panelButtons.Controls.Add(Update);
+            panelButtons.Controls.Add(Delete);
+            panelButtons.Location = new Point(500, 540);
+            panelButtons.Name = "panelButtons";
+            panelButtons.Size = new Size(460, 48);
+            panelButtons.TabIndex = 32;
+            // 
+            // panelHeader
+            // 
+            panelHeader.BackColor = Color.FromArgb(33, 37, 41);
+            panelHeader.Controls.Add(lblTitle);
+            panelHeader.Dock = DockStyle.Top;
+            panelHeader.Location = new Point(0, 0);
+            panelHeader.Name = "panelHeader";
+            panelHeader.Size = new Size(980, 52);
+            panelHeader.TabIndex = 33;
+            // 
+            // lblTitle
+            // 
+            lblTitle.AutoSize = true;
+            lblTitle.Font = new Font("Calibri", 14F, FontStyle.Bold, GraphicsUnit.Point);
+            lblTitle.ForeColor = Color.White;
+            lblTitle.Location = new Point(18, 14);
+            lblTitle.Name = "lblTitle";
+            lblTitle.Size = new Size(230, 23);
+            lblTitle.TabIndex = 0;
+            lblTitle.Text = "Транспортные накладные";
+            // 
             // TransportationBills
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(907, 512);
-            Controls.Add(chkPhysicalPerson);
-            Controls.Add(chkActWithoutNumber);
-            Controls.Add(label12);
-            Controls.Add(lblAdres);
-            Controls.Add(lblWhom);
-            Controls.Add(label9);
-            Controls.Add(label8);
-            Controls.Add(label7);
-            Controls.Add(lblInvoiceNumber);
-            Controls.Add(label5);
-            Controls.Add(label4);
-            Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(label1);
-            Controls.Add(Delete);
-            Controls.Add(Update);
-            Controls.Add(Add);
-            Controls.Add(numCost);
-            Controls.Add(txtWhom);
-            Controls.Add(txtAddress);
-            Controls.Add(txtDocs);
-            Controls.Add(txtResponsible);
-            Controls.Add(txtTripNumber);
-            Controls.Add(txtActNumber);
-            Controls.Add(cbContractors);
-            Controls.Add(cbCarriers);
-            Controls.Add(cbCustomers);
-            Controls.Add(dtDate);
-            Controls.Add(gridBills);
+            BackColor = Color.WhiteSmoke;
+            ClientSize = new Size(980, 650);
+            Controls.Add(panelButtons);
+            Controls.Add(grpDocs);
+            Controls.Add(grpReceiver);
+            Controls.Add(grpNumbers);
+            Controls.Add(grpMain);
+            Controls.Add(grpList);
+            Controls.Add(panelHeader);
+            Font = new Font("Calibri", 10F, FontStyle.Regular, GraphicsUnit.Point);
             Name = "TransportationBills";
-            Text = "Транспортные накладые";
+            Text = "Транспортные накладные";
             ((System.ComponentModel.ISupportInitialize)gridBills).EndInit();
             ((System.ComponentModel.ISupportInitialize)numCost).EndInit();
+            grpList.ResumeLayout(false);
+            grpMain.ResumeLayout(false);
+            grpMain.PerformLayout();
+            grpNumbers.ResumeLayout(false);
+            grpNumbers.PerformLayout();
+            grpReceiver.ResumeLayout(false);
+            grpReceiver.PerformLayout();
+            grpDocs.ResumeLayout(false);
+            grpDocs.PerformLayout();
+            panelButtons.ResumeLayout(false);
+            panelHeader.ResumeLayout(false);
+            panelHeader.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -383,7 +497,6 @@
         private Button Delete;
         private Label label1;
         private Label label2;
-        private Label label3;
         private Label label4;
         private Label label5;
         private Label lblInvoiceNumber;
@@ -395,5 +508,13 @@
         private Label label12;
         private CheckBox chkActWithoutNumber;
         private CheckBox chkPhysicalPerson;
+        private GroupBox grpList;
+        private GroupBox grpMain;
+        private GroupBox grpNumbers;
+        private GroupBox grpReceiver;
+        private GroupBox grpDocs;
+        private Panel panelButtons;
+        private Panel panelHeader;
+        private Label lblTitle;
     }
 }
