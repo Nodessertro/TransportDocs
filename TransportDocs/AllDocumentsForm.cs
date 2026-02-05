@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 using TransportDocs.Models;
 using TransportDocs.Repositories;
 using TransportDocs.Services;
@@ -112,10 +113,7 @@ namespace TransportDocs
                 result.ActNumber,
                 result.TripNumber
             );
-
-            MessageBox.Show(
-                $"Все документы успешно созданы:\n{actPath}\n{billPath}"
-            );
+            OpenOutputFolder(generator.LastOutputDir);
         }
 
         private void btnAct_Click(object sender, EventArgs e)
@@ -132,10 +130,7 @@ namespace TransportDocs
                 result.ActNumber,
                 result.TripNumber
             );
-
-            MessageBox.Show(
-                $"Акт и заявка успешно созданы:\n{actPath}"
-            );
+            OpenOutputFolder(generator.LastOutputDir);
         }
 
         private void btnBill_Click(object sender, EventArgs e)
@@ -158,10 +153,7 @@ namespace TransportDocs
                 invoiceNumber,
                 requestNumber
             );
-
-            MessageBox.Show(
-                $"Транспортная накладная успешно создана:\n{billPath}"
-            );
+            OpenOutputFolder(generator.LastOutputDir);
         }
 
         private AllDocumentsRequest BuildRequestFromForm()
@@ -216,6 +208,18 @@ namespace TransportDocs
         private void dtDate_ValueChanged(object sender, EventArgs e)
         {
             UpdateNumberPreview();
+        }
+
+        private static void OpenOutputFolder(string? folderPath)
+        {
+            if (string.IsNullOrWhiteSpace(folderPath))
+                return;
+
+            Process.Start(new ProcessStartInfo
+            {
+                FileName = folderPath,
+                UseShellExecute = true
+            });
         }
     }
 }

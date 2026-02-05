@@ -17,6 +17,8 @@ namespace TransportDocs.Services
         private string? _runOutputDir;
         private DateTime? _runTimestamp;
 
+        public string? LastOutputDir => _runOutputDir;
+
         public DocumentGenerator()
         {
             _templatesDir = Path.Combine(
