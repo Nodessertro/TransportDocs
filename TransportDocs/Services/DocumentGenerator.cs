@@ -13,7 +13,9 @@ namespace TransportDocs.Services
     public class DocumentGenerator
     {
         private readonly string _templatesDir;
-        private readonly string _outputDir;
+        private readonly string _outputRootDir;
+        private string? _runOutputDir;
+        private DateTime? _runTimestamp;
 
         public DocumentGenerator()
         {
@@ -21,10 +23,16 @@ namespace TransportDocs.Services
                 AppDomain.CurrentDomain.BaseDirectory,
                 "Templates"
             );
-            _outputDir = Path.Combine(
+            _outputRootDir = Path.Combine(
                 AppDomain.CurrentDomain.BaseDirectory,
                 "Documents"
             );
+        }
+
+        public void StartRun(AllDocumentsRequest req)
+        {
+            _runTimestamp = DateTime.Now;
+            _runOutputDir = null;
         }
 
         public string GenerateActAndRequest(
@@ -33,9 +41,9 @@ namespace TransportDocs.Services
             string requestNumber
         )
         {
-            Directory.CreateDirectory(_outputDir);
-
             var data = BuildCommonData(req, actNumber, requestNumber);
+            string outputDir = EnsureRunOutputDir(data);
+            Directory.CreateDirectory(outputDir);
 
             string actTemplate = Path.Combine(_templatesDir, "Акт.docx");
             string requestTemplate = Path.Combine(
@@ -44,15 +52,15 @@ namespace TransportDocs.Services
             );
 
             string actOut = Path.Combine(
-                _outputDir,
+                outputDir,
                 $"Акт_{data.DateShort}_{SafeFileName(data.CustomerName)}.docx"
             );
             string requestOut = Path.Combine(
-                _outputDir,
+                outputDir,
                 $"Заявка_{data.DateShort}_{SafeFileName(data.CustomerName)}.docx"
             );
             string mergedOut = Path.Combine(
-                _outputDir,
+                outputDir,
                 $"Акт_и_Заявка_{data.DateShort}_{SafeFileName(data.CustomerName)}.docx"
             );
 
@@ -75,9 +83,9 @@ namespace TransportDocs.Services
             string requestNumber
         )
         {
-            Directory.CreateDirectory(_outputDir);
-
             var data = BuildCommonData(req, invoiceNumber, requestNumber);
+            string outputDir = EnsureRunOutputDir(data);
+            Directory.CreateDirectory(outputDir);
 
             string xlsTemplate = Path.Combine(
                 _templatesDir,
@@ -93,7 +101,7 @@ namespace TransportDocs.Services
             }
 
             string billOut = Path.Combine(
-                _outputDir,
+                outputDir,
                 $"Транспортная_накладная_{data.DateShort}_{SafeFileName(data.CustomerName)}.xls"
             );
 
@@ -551,6 +559,21 @@ namespace TransportDocs.Services
             }
 
             return name;
+        }
+
+        private string EnsureRunOutputDir(TemplateData data)
+        {
+            if (!string.IsNullOrWhiteSpace(_runOutputDir))
+            {
+                return _runOutputDir;
+            }
+
+            DateTime ts = _runTimestamp ?? DateTime.Now;
+            string folderName = $"{data.CustomerName} {data.CarrierName} {ts:yyyy-MM-dd HH-mm-ss}";
+            folderName = SafeFileName(folderName);
+
+            _runOutputDir = Path.Combine(_outputRootDir, folderName);
+            return _runOutputDir;
         }
 
         private static void EnsureFileExists(string path)

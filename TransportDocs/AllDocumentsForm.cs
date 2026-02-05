@@ -86,6 +86,7 @@ namespace TransportDocs
             var result = service.CreateAll(req);
 
             var generator = new DocumentGenerator();
+            generator.StartRun(req);
             string actPath = generator.GenerateActAndRequest(
                 req,
                 result.ActNumber,
@@ -110,6 +111,7 @@ namespace TransportDocs
             var result = service.CreateActAndRequest(req);
 
             var generator = new DocumentGenerator();
+            generator.StartRun(req);
             string actPath = generator.GenerateActAndRequest(
                 req,
                 result.ActNumber,
@@ -135,6 +137,7 @@ namespace TransportDocs
             txtTripNumber.Text = requestNumber;
 
             var generator = new DocumentGenerator();
+            generator.StartRun(req);
             string billPath = generator.GenerateTransportationBill(
                 req,
                 invoiceNumber,
