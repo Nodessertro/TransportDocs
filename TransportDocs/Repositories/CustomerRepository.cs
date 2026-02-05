@@ -5,6 +5,33 @@ namespace TransportDocs.Repositories
 {
     public class CustomerRepository
     {
+        public Customer GetById(int id)
+        {
+            using var connection = Db.GetConnection();
+            connection.Open();
+
+            var cmd = connection.CreateCommand();
+            cmd.CommandText = "SELECT * FROM Customers WHERE Id = @id";
+            cmd.Parameters.AddWithValue("@id", id);
+
+            using var reader = cmd.ExecuteReader();
+            if (!reader.Read())
+            {
+                return new Customer();
+            }
+
+            return new Customer
+            {
+                Id = reader.GetInt32(0),
+                Name = reader.GetString(1),
+                Inn = reader.IsDBNull(2) ? string.Empty : reader.GetString(2),
+                Kpp = reader.IsDBNull(3) ? string.Empty : reader.GetString(3),
+                Ogrn = reader.IsDBNull(4) ? string.Empty : reader.GetString(4),
+                Address = reader.IsDBNull(5) ? string.Empty : reader.GetString(5),
+                DirectorName = reader.IsDBNull(6) ? string.Empty : reader.GetString(6)
+            };
+        }
+
         public List<Customer> GetAll()
         {
             var list = new List<Customer>();

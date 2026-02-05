@@ -49,6 +49,8 @@
             label7 = new Label();
             label8 = new Label();
             btnCreateAll = new Button();
+            btnAct = new Button();
+            btnBill = new Button();
             ((System.ComponentModel.ISupportInitialize)numCost).BeginInit();
             SuspendLayout();
             // 
@@ -224,19 +226,41 @@
             // 
             // btnCreateAll
             // 
-            btnCreateAll.Location = new Point(328, 327);
+            btnCreateAll.Location = new Point(532, 327);
             btnCreateAll.Name = "btnCreateAll";
             btnCreateAll.Size = new Size(75, 23);
             btnCreateAll.TabIndex = 21;
-            btnCreateAll.Text = "button1";
+            btnCreateAll.Text = "Все";
             btnCreateAll.UseVisualStyleBackColor = true;
             btnCreateAll.Click += btnCreateAll_Click;
+            // 
+            // btnAct
+            // 
+            btnAct.Location = new Point(332, 327);
+            btnAct.Name = "btnAct";
+            btnAct.Size = new Size(90, 23);
+            btnAct.TabIndex = 22;
+            btnAct.Text = "Акт";
+            btnAct.UseVisualStyleBackColor = true;
+            btnAct.Click += btnAct_Click;
+            // 
+            // btnBill
+            // 
+            btnBill.Location = new Point(430, 327);
+            btnBill.Name = "btnBill";
+            btnBill.Size = new Size(95, 23);
+            btnBill.TabIndex = 23;
+            btnBill.Text = "Накладная";
+            btnBill.UseVisualStyleBackColor = true;
+            btnBill.Click += btnBill_Click;
             // 
             // AllDocumentsForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnBill);
+            Controls.Add(btnAct);
             Controls.Add(btnCreateAll);
             Controls.Add(label8);
             Controls.Add(label7);
@@ -288,5 +312,7 @@
         private Label label7;
         private Label label8;
         private Button btnCreateAll;
+        private Button btnAct;
+        private Button btnBill;
     }
 }

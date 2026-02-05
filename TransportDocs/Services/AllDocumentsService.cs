@@ -5,7 +5,7 @@ namespace TransportDocs.Services
 {
     public class AllDocumentsService
     {
-        public void CreateAll(AllDocumentsRequest req)
+        public AllDocumentsResult CreateAll(AllDocumentsRequest req)
         {
             using var con = Db.GetConnection();
             con.Open();
@@ -98,6 +98,59 @@ namespace TransportDocs.Services
                 // 4. Фиксируем
                 // -----------------------------
                 tx.Commit();
+                return new AllDocumentsResult(actNumber, tripNumber);
+            }
+            catch
+            {
+                tx.Rollback();
+                throw;
+            }
+        }
+
+        public AllDocumentsResult CreateActAndRequest(AllDocumentsRequest req)
+        {
+            using var con = Db.GetConnection();
+            con.Open();
+
+            using var tx = con.BeginTransaction();
+
+            try
+            {
+                var numbering = new NumberingService(con, tx);
+
+                string actNumber = req.ActWithoutNumber
+                    ? "б/н"
+                    : numbering.GetNextSimpleNumber(req.CarrierId, req.Date.Year);
+
+                string tripNumber = numbering.GetNextTripNumber(
+                    req.CarrierId,
+                    req.Date
+                );
+
+                var finishedCmd = con.CreateCommand();
+                finishedCmd.Transaction = tx;
+                finishedCmd.CommandText = @"
+                    INSERT INTO FinishedDocuments
+                    (CustomerId, CarrierId, Date, City, Cost, ActNumber, TripNumber)
+                    VALUES
+                    (@cust, @car, @date, @city, @cost, @act, @trip)
+                ";
+
+                finishedCmd.Parameters.AddWithValue("@cust", req.CustomerId);
+                finishedCmd.Parameters.AddWithValue("@car", req.CarrierId);
+                finishedCmd.Parameters.AddWithValue(
+                    "@date",
+                    req.Date.ToString("yyyy-MM-dd")
+                );
+                finishedCmd.Parameters.AddWithValue("@city", req.City);
+                finishedCmd.Parameters.AddWithValue("@cost", req.Cost);
+                finishedCmd.Parameters.AddWithValue("@act", actNumber);
+                finishedCmd.Parameters.AddWithValue("@trip", tripNumber);
+
+                finishedCmd.ExecuteNonQuery();
+
+                tx.Commit();
+                return new AllDocumentsResult(actNumber, tripNumber);
             }
             catch
             {
@@ -106,4 +159,6 @@ namespace TransportDocs.Services
             }
         }
     }
+
+    public record AllDocumentsResult(string ActNumber, string TripNumber);
 }

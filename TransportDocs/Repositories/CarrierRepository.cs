@@ -5,6 +5,35 @@ namespace TransportDocs.Repositories
 {
     public class CarrierRepository
     {
+        public Carrier GetById(int id)
+        {
+            using var connection = Db.GetConnection();
+            connection.Open();
+
+            var cmd = connection.CreateCommand();
+            cmd.CommandText = "SELECT * FROM Carriers WHERE Id = @id";
+            cmd.Parameters.AddWithValue("@id", id);
+
+            using var reader = cmd.ExecuteReader();
+            if (!reader.Read())
+            {
+                return new Carrier();
+            }
+
+            return new Carrier
+            {
+                Id = reader.GetInt32(0),
+                Name = reader.IsDBNull(1) ? string.Empty : reader.GetString(1),
+                Ogrn = reader.IsDBNull(2) ? string.Empty : reader.GetString(2),
+                Inn = reader.IsDBNull(3) ? string.Empty : reader.GetString(3),
+                Address = reader.IsDBNull(4) ? string.Empty : reader.GetString(4),
+                CarNumber = reader.IsDBNull(5) ? string.Empty : reader.GetString(5),
+                CarModel = reader.IsDBNull(6) ? string.Empty : reader.GetString(6),
+                Phone = reader.IsDBNull(7) ? string.Empty : reader.GetString(7),
+                Tonnage = reader.IsDBNull(8) ? string.Empty : reader.GetString(8)
+            };
+        }
+
         public List<Carrier> GetAll()
         {
             var list = new List<Carrier>();

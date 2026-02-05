@@ -5,6 +5,41 @@ namespace TransportDocs.Repositories
 {
     public class ContractRepository
     {
+        public string GetLatestDate(int customerId, int carrierId)
+        {
+            using var con = Db.GetConnection();
+            con.Open();
+
+            var cmd = con.CreateCommand();
+            cmd.CommandText = @"
+                SELECT Date
+                FROM Contracts
+                WHERE CustomerId = @cust
+                  AND CarrierId = @car
+                ORDER BY Date DESC
+                LIMIT 1
+            ";
+
+            cmd.Parameters.AddWithValue("@cust", customerId);
+            cmd.Parameters.AddWithValue("@car", carrierId);
+
+            var result = cmd.ExecuteScalar();
+            if (result == null) return string.Empty;
+
+            if (DateTime.TryParse(result.ToString(), out var dt))
+            {
+                string[] months =
+                {
+                    "января", "февраля", "марта", "апреля",
+                    "мая", "июня", "июля", "августа",
+                    "сентября", "октября", "ноября", "декабря"
+                };
+                return $"{dt.Day} {months[dt.Month - 1]} {dt:yyyy}";
+            }
+
+            return result.ToString() ?? string.Empty;
+        }
+
         public List<Contract> GetAll()
         {
             var list = new List<Contract>();

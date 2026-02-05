@@ -80,7 +80,69 @@ namespace TransportDocs
 
         private void btnCreateAll_Click(object sender, EventArgs e)
         {
-            var req = new AllDocumentsRequest
+            var req = BuildRequestFromForm();
+
+            var service = new AllDocumentsService();
+            var result = service.CreateAll(req);
+
+            var generator = new DocumentGenerator();
+            generator.GenerateActAndRequest(
+                req,
+                result.ActNumber,
+                result.TripNumber
+            );
+            generator.GenerateTransportationBill(
+                req,
+                result.ActNumber,
+                result.TripNumber
+            );
+
+            MessageBox.Show("Все документы успешно созданы");
+        }
+
+        private void btnAct_Click(object sender, EventArgs e)
+        {
+            var req = BuildRequestFromForm();
+
+            var service = new AllDocumentsService();
+            var result = service.CreateActAndRequest(req);
+
+            var generator = new DocumentGenerator();
+            generator.GenerateActAndRequest(
+                req,
+                result.ActNumber,
+                result.TripNumber
+            );
+
+            MessageBox.Show("Акт и заявка успешно созданы");
+        }
+
+        private void btnBill_Click(object sender, EventArgs e)
+        {
+            var req = BuildRequestFromForm();
+
+            string invoiceNumber = txtActNumber.Text;
+
+            var billService = new TransportationBillService();
+            string requestNumber = billService.CreateWithNumbering(
+                req,
+                invoiceNumber
+            );
+            txtTripNumber.Text = requestNumber;
+
+            var generator = new DocumentGenerator();
+            generator.GenerateTransportationBill(
+                req,
+                invoiceNumber,
+                requestNumber
+            );
+
+            MessageBox.Show("Транспортная накладная успешно создана");
+        }
+
+        private AllDocumentsRequest BuildRequestFromForm()
+        {
+            return new AllDocumentsRequest
             {
                 Date = dtDate.Value,
                 City = txtCity.Text,
@@ -101,11 +163,6 @@ namespace TransportDocs
                         ? txtAddress.Text
                         : ((Contractor)cbContractors.SelectedItem).Address
             };
-
-            var service = new AllDocumentsService();
-            service.CreateAll(req);
-
-            MessageBox.Show("Документы успешно созданы");
         }
 
         private void UpdateNumberPreview()
