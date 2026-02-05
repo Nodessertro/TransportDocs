@@ -130,7 +130,7 @@
             chkPhysicalPerson.AutoSize = true;
             chkPhysicalPerson.Checked = true;
             chkPhysicalPerson.CheckState = CheckState.Checked;
-            chkPhysicalPerson.Location = new Point(120, 112);
+            chkPhysicalPerson.Location = new Point(120, 68);
             chkPhysicalPerson.Name = "chkPhysicalPerson";
             chkPhysicalPerson.Size = new Size(78, 19);
             chkPhysicalPerson.TabIndex = 7;
@@ -158,7 +158,7 @@
             // 
             // txtAddress
             // 
-            txtAddress.Location = new Point(120, 68);
+            txtAddress.Location = new Point(120, 96);
             txtAddress.Name = "txtAddress";
             txtAddress.Size = new Size(300, 23);
             txtAddress.TabIndex = 11;
@@ -166,7 +166,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(16, 72);
+            label5.Location = new Point(16, 100);
             label5.Name = "label5";
             label5.Size = new Size(40, 15);
             label5.TabIndex = 13;
@@ -307,7 +307,6 @@
             grpParties.Controls.Add(label2);
             grpParties.Controls.Add(cbCustomers);
             grpParties.Controls.Add(cbCarriers);
-            grpParties.Controls.Add(chkPhysicalPerson);
             grpParties.Location = new Point(20, 220);
             grpParties.Name = "grpParties";
             grpParties.Size = new Size(420, 160);
@@ -320,11 +319,12 @@
             grpRecipient.BackColor = Color.White;
             grpRecipient.Controls.Add(label3);
             grpRecipient.Controls.Add(cbContractors);
+            grpRecipient.Controls.Add(chkPhysicalPerson);
             grpRecipient.Controls.Add(label5);
             grpRecipient.Controls.Add(txtAddress);
             grpRecipient.Location = new Point(460, 70);
             grpRecipient.Name = "grpRecipient";
-            grpRecipient.Size = new Size(440, 110);
+            grpRecipient.Size = new Size(440, 130);
             grpRecipient.TabIndex = 26;
             grpRecipient.TabStop = false;
             grpRecipient.Text = "Получатель";
@@ -337,7 +337,7 @@
             grpNumbers.Controls.Add(chkActWithoutNumber);
             grpNumbers.Controls.Add(label8);
             grpNumbers.Controls.Add(txtTripNumber);
-            grpNumbers.Location = new Point(460, 190);
+            grpNumbers.Location = new Point(460, 210);
             grpNumbers.Name = "grpNumbers";
             grpNumbers.Size = new Size(440, 110);
             grpNumbers.TabIndex = 27;
