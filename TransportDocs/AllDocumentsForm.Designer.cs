@@ -71,7 +71,7 @@
             // 
             dtDate.Location = new Point(120, 32);
             dtDate.Name = "dtDate";
-            dtDate.Size = new Size(220, 23);
+            dtDate.Size = new Size(220, 24);
             dtDate.TabIndex = 0;
             dtDate.ValueChanged += dtDate_ValueChanged;
             // 
@@ -79,7 +79,7 @@
             // 
             txtCity.Location = new Point(120, 68);
             txtCity.Name = "txtCity";
-            txtCity.Size = new Size(220, 23);
+            txtCity.Size = new Size(220, 24);
             txtCity.TabIndex = 1;
             // 
             // numCost
@@ -87,7 +87,7 @@
             numCost.Location = new Point(120, 104);
             numCost.Maximum = new decimal(new int[] { 100000000, 0, 0, 0 });
             numCost.Name = "numCost";
-            numCost.Size = new Size(220, 23);
+            numCost.Size = new Size(220, 24);
             numCost.TabIndex = 2;
             // 
             // cbCustomers
@@ -112,7 +112,7 @@
             label1.AutoSize = true;
             label1.Location = new Point(20, 36);
             label1.Name = "label1";
-            label1.Size = new Size(79, 15);
+            label1.Size = new Size(87, 17);
             label1.TabIndex = 5;
             label1.Text = "Организация";
             // 
@@ -121,7 +121,7 @@
             label2.AutoSize = true;
             label2.Location = new Point(20, 76);
             label2.Name = "label2";
-            label2.Size = new Size(73, 15);
+            label2.Size = new Size(80, 17);
             label2.TabIndex = 6;
             label2.Text = "Перевозчик";
             // 
@@ -132,7 +132,7 @@
             chkPhysicalPerson.CheckState = CheckState.Checked;
             chkPhysicalPerson.Location = new Point(120, 68);
             chkPhysicalPerson.Name = "chkPhysicalPerson";
-            chkPhysicalPerson.Size = new Size(78, 19);
+            chkPhysicalPerson.Size = new Size(84, 21);
             chkPhysicalPerson.TabIndex = 7;
             chkPhysicalPerson.Text = "Физ лицо";
             chkPhysicalPerson.UseVisualStyleBackColor = true;
@@ -152,7 +152,7 @@
             label3.AutoSize = true;
             label3.Location = new Point(16, 36);
             label3.Name = "label3";
-            label3.Size = new Size(69, 15);
+            label3.Size = new Size(73, 17);
             label3.TabIndex = 9;
             label3.Text = "Контрагент";
             // 
@@ -160,7 +160,7 @@
             // 
             txtAddress.Location = new Point(120, 96);
             txtAddress.Name = "txtAddress";
-            txtAddress.Size = new Size(300, 23);
+            txtAddress.Size = new Size(300, 24);
             txtAddress.TabIndex = 11;
             // 
             // label5
@@ -168,16 +168,16 @@
             label5.AutoSize = true;
             label5.Location = new Point(16, 100);
             label5.Name = "label5";
-            label5.Size = new Size(40, 15);
+            label5.Size = new Size(44, 17);
             label5.TabIndex = 13;
             label5.Text = "Адрес";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(20, 72);
+            label6.Location = new Point(10, 72);
             label6.Name = "label6";
-            label6.Size = new Size(40, 15);
+            label6.Size = new Size(41, 17);
             label6.TabIndex = 14;
             label6.Text = "Город";
             // 
@@ -185,14 +185,14 @@
             // 
             txtActNumber.Location = new Point(140, 32);
             txtActNumber.Name = "txtActNumber";
-            txtActNumber.Size = new Size(140, 23);
+            txtActNumber.Size = new Size(140, 24);
             txtActNumber.TabIndex = 15;
             // 
             // txtTripNumber
             // 
             txtTripNumber.Location = new Point(140, 72);
             txtTripNumber.Name = "txtTripNumber";
-            txtTripNumber.Size = new Size(140, 23);
+            txtTripNumber.Size = new Size(140, 24);
             txtTripNumber.TabIndex = 16;
             // 
             // chkActWithoutNumber
@@ -200,7 +200,7 @@
             chkActWithoutNumber.AutoSize = true;
             chkActWithoutNumber.Location = new Point(300, 34);
             chkActWithoutNumber.Name = "chkActWithoutNumber";
-            chkActWithoutNumber.Size = new Size(89, 19);
+            chkActWithoutNumber.Size = new Size(95, 21);
             chkActWithoutNumber.TabIndex = 18;
             chkActWithoutNumber.Text = "Без номера";
             chkActWithoutNumber.UseVisualStyleBackColor = true;
@@ -211,7 +211,7 @@
             label7.AutoSize = true;
             label7.Location = new Point(16, 36);
             label7.Name = "label7";
-            label7.Size = new Size(71, 15);
+            label7.Size = new Size(76, 17);
             label7.TabIndex = 19;
             label7.Text = "Номер акта";
             // 
@@ -220,7 +220,7 @@
             label8.AutoSize = true;
             label8.Location = new Point(16, 76);
             label8.Name = "label8";
-            label8.Size = new Size(84, 15);
+            label8.Size = new Size(92, 17);
             label8.TabIndex = 20;
             label8.Text = "Номер заявки";
             // 
@@ -285,18 +285,18 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(20, 36);
+            label9.Location = new Point(10, 36);
             label9.Name = "label9";
-            label9.Size = new Size(33, 15);
+            label9.Size = new Size(36, 17);
             label9.TabIndex = 25;
             label9.Text = "Дата";
             // 
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(20, 108);
+            label10.Location = new Point(10, 106);
             label10.Name = "label10";
-            label10.Size = new Size(100, 15);
+            label10.Size = new Size(104, 17);
             label10.TabIndex = 26;
             label10.Text = "Стоимость (руб.)";
             // 
@@ -368,11 +368,11 @@
             // lblTitle
             // 
             lblTitle.AutoSize = true;
-            lblTitle.Font = new Font("Calibri", 14F, FontStyle.Bold, GraphicsUnit.Point);
+            lblTitle.Font = new Font("Calibri", 14F, FontStyle.Bold);
             lblTitle.ForeColor = Color.White;
             lblTitle.Location = new Point(18, 14);
             lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(214, 23);
+            lblTitle.Size = new Size(192, 23);
             lblTitle.TabIndex = 0;
             lblTitle.Text = "Создание документов";
             // 
@@ -382,13 +382,13 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.WhiteSmoke;
             ClientSize = new Size(950, 460);
-            Font = new Font("Calibri", 10F, FontStyle.Regular, GraphicsUnit.Point);
             Controls.Add(panelHeader);
             Controls.Add(panelButtons);
             Controls.Add(grpNumbers);
             Controls.Add(grpRecipient);
             Controls.Add(grpParties);
             Controls.Add(grpTrip);
+            Font = new Font("Calibri", 10F);
             Name = "AllDocumentsForm";
             Text = "Документы";
             ((System.ComponentModel.ISupportInitialize)numCost).EndInit();
@@ -404,7 +404,6 @@
             panelHeader.ResumeLayout(false);
             panelHeader.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
