@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dataGridViewCustomers = new DataGridView();
             button1 = new Button();
             button2 = new Button();
             button3 = new Button();
@@ -37,22 +36,11 @@
             button6 = new Button();
             button7 = new Button();
             grpNavigation = new GroupBox();
-            grpPreview = new GroupBox();
             panelHeader = new Panel();
             lblTitle = new Label();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewCustomers).BeginInit();
             grpNavigation.SuspendLayout();
-            grpPreview.SuspendLayout();
             panelHeader.SuspendLayout();
             SuspendLayout();
-            // 
-            // dataGridViewCustomers
-            // 
-            dataGridViewCustomers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCustomers.Location = new Point(12, 26);
-            dataGridViewCustomers.Name = "dataGridViewCustomers";
-            dataGridViewCustomers.Size = new Size(450, 250);
-            dataGridViewCustomers.TabIndex = 0;
             // 
             // button1
             // 
@@ -169,17 +157,6 @@
             grpNavigation.TabStop = false;
             grpNavigation.Text = "Разделы";
             // 
-            // grpPreview
-            // 
-            grpPreview.BackColor = Color.White;
-            grpPreview.Controls.Add(dataGridViewCustomers);
-            grpPreview.Location = new Point(420, 70);
-            grpPreview.Name = "grpPreview";
-            grpPreview.Size = new Size(476, 300);
-            grpPreview.TabIndex = 9;
-            grpPreview.TabStop = false;
-            grpPreview.Text = "Быстрый просмотр";
-            // 
             // panelHeader
             // 
             panelHeader.BackColor = Color.FromArgb(33, 37, 41);
@@ -206,17 +183,14 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.WhiteSmoke;
-            ClientSize = new Size(920, 420);
+            ClientSize = new Size(420, 360);
             Controls.Add(panelHeader);
-            Controls.Add(grpPreview);
             Controls.Add(grpNavigation);
             Font = new Font("Calibri", 10F, FontStyle.Regular, GraphicsUnit.Point);
             Name = "Form1";
             Text = "TransportDocs";
             Load += Form1_Load;
-            ((System.ComponentModel.ISupportInitialize)dataGridViewCustomers).EndInit();
             grpNavigation.ResumeLayout(false);
-            grpPreview.ResumeLayout(false);
             panelHeader.ResumeLayout(false);
             panelHeader.PerformLayout();
             ResumeLayout(false);
@@ -224,7 +198,6 @@
 
         #endregion
 
-        private DataGridView dataGridViewCustomers;
         private Button button1;
         private Button button2;
         private Button button3;
@@ -233,7 +206,6 @@
         private Button button6;
         private Button button7;
         private GroupBox grpNavigation;
-        private GroupBox grpPreview;
         private Panel panelHeader;
         private Label lblTitle;
     }
