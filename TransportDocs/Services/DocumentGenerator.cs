@@ -64,6 +64,7 @@ namespace TransportDocs.Services
             );
 
             MergeDocx(actOut, requestOut, mergedOut);
+            EnsureFileExists(mergedOut);
 
             return mergedOut;
         }
@@ -102,6 +103,7 @@ namespace TransportDocs.Services
                 BuildBillPlaceholders(data),
                 data
             );
+            EnsureFileExists(billOut);
             return billOut;
         }
 
@@ -277,6 +279,7 @@ namespace TransportDocs.Services
         {
             using var fs = File.OpenRead(templatePath);
             var workbook = new HSSFWorkbook(fs);
+            var formatter = new DataFormatter();
 
             for (int s = 0; s < workbook.NumberOfSheets; s++)
             {
@@ -287,20 +290,20 @@ namespace TransportDocs.Services
                 {
                     foreach (ICell cell in row.Cells)
                     {
-                        if (cell.CellType == CellType.String)
-                        {
-                            string value = cell.StringCellValue;
-                            string updated = ApplyXlsReplacements(
-                                value,
-                                replacements,
-                                data
-                            );
+                        string value = formatter.FormatCellValue(cell);
+                        if (string.IsNullOrWhiteSpace(value)) continue;
 
-                            if (!ReferenceEquals(value, updated)
-                                && value != updated)
-                            {
-                                cell.SetCellValue(updated);
-                            }
+                        string updated = ApplyXlsReplacements(
+                            value,
+                            replacements,
+                            data
+                        );
+
+                        if (!ReferenceEquals(value, updated)
+                            && value != updated)
+                        {
+                            cell.SetCellType(CellType.String);
+                            cell.SetCellValue(updated);
                         }
                     }
                 }
@@ -548,6 +551,17 @@ namespace TransportDocs.Services
             }
 
             return name;
+        }
+
+        private static void EnsureFileExists(string path)
+        {
+            if (!File.Exists(path))
+            {
+                throw new FileNotFoundException(
+                    "Файл не был создан.",
+                    path
+                );
+            }
         }
 
         private class TemplateData

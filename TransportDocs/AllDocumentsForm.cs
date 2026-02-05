@@ -53,8 +53,8 @@ namespace TransportDocs
 
             cbContractors.Visible = !isPhysical;
 
-            txtWhom.Visible = isPhysical;
             txtAddress.Visible = isPhysical;
+            label5.Visible = isPhysical;
         }
 
         private void cbContractors_TextChanged(object sender, EventArgs e)
@@ -86,18 +86,20 @@ namespace TransportDocs
             var result = service.CreateAll(req);
 
             var generator = new DocumentGenerator();
-            generator.GenerateActAndRequest(
+            string actPath = generator.GenerateActAndRequest(
                 req,
                 result.ActNumber,
                 result.TripNumber
             );
-            generator.GenerateTransportationBill(
+            string billPath = generator.GenerateTransportationBill(
                 req,
                 result.ActNumber,
                 result.TripNumber
             );
 
-            MessageBox.Show("Все документы успешно созданы");
+            MessageBox.Show(
+                $"Все документы успешно созданы:\n{actPath}\n{billPath}"
+            );
         }
 
         private void btnAct_Click(object sender, EventArgs e)
@@ -108,13 +110,15 @@ namespace TransportDocs
             var result = service.CreateActAndRequest(req);
 
             var generator = new DocumentGenerator();
-            generator.GenerateActAndRequest(
+            string actPath = generator.GenerateActAndRequest(
                 req,
                 result.ActNumber,
                 result.TripNumber
             );
 
-            MessageBox.Show("Акт и заявка успешно созданы");
+            MessageBox.Show(
+                $"Акт и заявка успешно созданы:\n{actPath}"
+            );
         }
 
         private void btnBill_Click(object sender, EventArgs e)
@@ -131,13 +135,15 @@ namespace TransportDocs
             txtTripNumber.Text = requestNumber;
 
             var generator = new DocumentGenerator();
-            generator.GenerateTransportationBill(
+            string billPath = generator.GenerateTransportationBill(
                 req,
                 invoiceNumber,
                 requestNumber
             );
 
-            MessageBox.Show("Транспортная накладная успешно создана");
+            MessageBox.Show(
+                $"Транспортная накладная успешно создана:\n{billPath}"
+            );
         }
 
         private AllDocumentsRequest BuildRequestFromForm()
@@ -157,7 +163,7 @@ namespace TransportDocs
                         ? null
                         : (int?)cbContractors.SelectedValue,
                 Whom = chkPhysicalPerson.Checked
-                        ? txtWhom.Text
+                        ? "Физическое лицо"
                         : ((Contractor)cbContractors.SelectedItem).Name,
                 Address = chkPhysicalPerson.Checked
                         ? txtAddress.Text

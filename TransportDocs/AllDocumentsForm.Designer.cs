@@ -38,9 +38,7 @@
             chkPhysicalPerson = new CheckBox();
             cbContractors = new ComboBox();
             label3 = new Label();
-            txtWhom = new TextBox();
             txtAddress = new TextBox();
-            label4 = new Label();
             label5 = new Label();
             label6 = new Label();
             txtActNumber = new TextBox();
@@ -139,29 +137,12 @@
             label3.TabIndex = 9;
             label3.Text = "Контрагент";
             // 
-            // txtWhom
-            // 
-            txtWhom.Location = new Point(488, 94);
-            txtWhom.Name = "txtWhom";
-            txtWhom.Size = new Size(100, 23);
-            txtWhom.TabIndex = 10;
-            txtWhom.Text = "Физическое лицо";
-            // 
             // txtAddress
             // 
             txtAddress.Location = new Point(488, 140);
             txtAddress.Name = "txtAddress";
             txtAddress.Size = new Size(100, 23);
             txtAddress.TabIndex = 11;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(413, 102);
-            label4.Name = "label4";
-            label4.Size = new Size(36, 15);
-            label4.TabIndex = 12;
-            label4.Text = "Кому";
             // 
             // label5
             // 
@@ -269,9 +250,7 @@
             Controls.Add(txtActNumber);
             Controls.Add(label6);
             Controls.Add(label5);
-            Controls.Add(label4);
             Controls.Add(txtAddress);
-            Controls.Add(txtWhom);
             Controls.Add(label3);
             Controls.Add(cbContractors);
             Controls.Add(chkPhysicalPerson);
@@ -301,9 +280,7 @@
         private CheckBox chkPhysicalPerson;
         private ComboBox cbContractors;
         private Label label3;
-        private TextBox txtWhom;
         private TextBox txtAddress;
-        private Label label4;
         private Label label5;
         private Label label6;
         private TextBox txtActNumber;
